@@ -1,2 +1,28 @@
-# 2.1  
-Problem rozwiązuję z wykorzystaniem algorytmu marsz Jarvisa
+2.1  
+Problem rozwiązuję z wykorzystaniem algorytmu Andrew przy szukaniu co rozwiązuje problem otoczki ten wydał mi się najłatwiejszy do zrozumienia przez intuicję z obwijaniem nitką.
+Sortujemy punkty po x rosnąco, jeżeli jest taki sam to po y też rosnąco.
+Budujemy otoczke przez dodwanie do niej kolejnych punktów sprawdzając czy nitka skręca w lewo czy w prawo jeżeli w lewo dodajemy punkt, jeżeli nie to wyrzucamy ostatni z otoczki i sprawdzamy kolejny.
+Do sprawdzenia wykorzystuję iloczyn wektorowy, p1, p2 i p1, p3 jezeli > 0 to nitka idzie w lewo jezeli <= to w prawo i wyrzucamy p2 z otoczki.
+Kiedy dojdziemy do konca to ta sama operacja tylko idąca od punkty z największym x.
+Na koniec usuwam z obydwu czesci po ostatnim punkcie bo jest pierwszym w drugiej czesci.
+
+2.2
+Wykorzystuję otoczkę z zadania 2.1.
+Biorę po kolei każdy wektor zbudowany z dwoch punktów otoczki i sprawdzam odleglosc od niego do kazdego z pozostalych punktow.
+Biorę największą bo musimy objąć wszystkie punkty i proste mają być równległe. (wektor jest już jedną a drugą poprowadzi się przez odpowiedni punktu)
+Szerokość między nimi wychodzi z iloczynu wektorowego/wektor. (|iloczyn wektorowy| to pole rownolegloboku z rozpatrywanych wektorow wynika to z przeksztalcenia wozru na pole trojkata który jest połową pola równoległoboku
+1/2 * podstawa * h(nasza odleglosc do 3 punktu od wekotra z punktu 1 i 2) = |iloczyn wektorowy|/2 ---> h = |iloczyn wektorowy|/podstawa
+Najmniejsze h to nasz wynik.
+
+2.3
+Łatwo można by sprawdzić odległość każdego do każdego ale żeby zyskać na złożoności wykorzystuję algorytm dziel i zwyciężaj.
+Korzystam z posortowanych punktow po x z 2.1.
+Dzielę punkty na mniejsze grupy przez brania środkowego z nich.
+Rekurencją wchodzę tak głęboko dopóki części nie będą miały 3 lub mniej punktów.
+Sprawdzam odległość między każdym z nich dla strony lewj i prawej danego podziału.
+Biorę najmniejszą (d) i sprawdzam czy nie ma mniejszej między punktami z lewej i prawej strony.
+Od punktu, który dzieli obszar robimę prostokąt o szerokości 2 d i sortuję punkty w nim po y żeby zacząć sprawdzanie od dołu.
+Prostokąt finalnie ma wysokość d bo interesują nas tylko mniejsze ewentualne mniejsze odległości i tylko w nim jest sprawdzane czy nie pojawia się mnieszja odległość.
+Kiedy funkcja skonczy dzialnie dostejmy najmniejsza odległość.
+
+
